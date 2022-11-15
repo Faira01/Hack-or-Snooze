@@ -55,15 +55,15 @@
   <!-- new story form-->
   <form action="" class="hidden" id="submit-form">
     <div>
-      <label for="create-author">author</label>
+      <label for="create-author">Author</label>
       <input id="create-author" placeholder="author name">
     </div>
     <div>
-      <label for="create-title">author</label>
+      <label for="create-title">Title</label>
       <input id="create-title" placeholder="story title">
     </div>
     <div>
-      <label for="create-url">author</label>
+      <label for="create-url">URL</label>
       <input id="create-url" type="url" placeholder="story url">
     </div>
     <button type="submit">Submit</button>
@@ -76,6 +76,11 @@
   <!-- List of all stories -->
   <ol id="all-stories-list" class="stories-list"></ol>
 
+  <!--Favorited Stories-->
+  <ol id="favorited-stories" class="hidden stories-list"></ol>
+
+  <!--User Stories-->
+  <ol id="my-stories" class="hidden stories-list"></ol>
 </section>
 
 <!-- Login and signup forms -->

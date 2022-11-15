@@ -39,18 +39,18 @@ function navSubmitStoryClick(evt){
   console.debug("navSubmitStoryClick",evt);
   hidePageComponents();
   $allStoriesList.show();
-  $submitForm.show()
+  $submit-Form.show()
 }
 
 $navSubmitStory.on('click',navSubmitStoryClick)
 
-function navFavoriesClick(evt){
+function navFavoritesClick(evt){
   console.debug('navFavoritesClick',evt);
   hidePageComponents();
   putFavoritesListOnPage();
 }
 
-$body.on("click", '#nav-favorites',navFavoriesClick);
+$body.on("click", '#nav-favorites',navFavoritesClick);
 
 function navMyStories(evt){
   console.debug('navMyStories',evt);

@@ -40,21 +40,6 @@ function generateStoryMarkup(story,showDeleteBtn =false) {
     `);
 }
 
-/** Gets list of stories from server, generates their HTML, and puts on page. */
-
-function putStoriesOnPage() {
-  console.debug("putStoriesOnPage");
-
-  $allStoriesList.empty();
-
-  // loop through all of our stories and generate HTML for them
-  for (let story of storyList.stories) {
-    const $story = generateStoryMarkup(story);
-    $allStoriesList.append($story);
-  }
-
-  $allStoriesList.show();
-}
 
 function getDeleteBtnHTML() {
   return `
@@ -77,7 +62,6 @@ function putStoriesOnPage() {
 
   $allStoriesList.empty();
 
-  // loop through all of our stories and generate HTML for them
   for (let story of storyList.stories) {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
@@ -120,6 +104,7 @@ async function submitNewStory(evt) {
   console.debug("submitNewStory");
   evt.preventDefault();
 
+  // form info
   const title = $("#create-title").val();
   const url = $("#create-url").val();
   const author = $("#create-author").val();
@@ -131,6 +116,7 @@ async function submitNewStory(evt) {
   const $story = generateStoryMarkup(story);
   $allStoriesList.prepend($story);
 
+  // hide and reset form
   $submitForm.slideUp("slow");
   $submitForm.trigger("reset");
 }
@@ -145,7 +131,6 @@ function putFavoritesListOnPage() {
   if (currentUser.favorites.length === 0) {
     $favoritedStories.append("<h5>No favorites added!</h5>");
   } else {
-    // loop through all of users favorites and generate HTML for them
     for (let story of currentUser.favorites) {
       const $story = generateStoryMarkup(story);
       $favoritedStories.append($story);
@@ -163,10 +148,13 @@ async function toggleStoryFavorite(evt) {
   const storyId = $closestLi.attr("id");
   const story = storyList.stories.find(s => s.storyId === storyId);
 
+  // check for star
   if ($tgt.hasClass("fas")) {
+    // if fav: remove from fav list and change star
     await currentUser.removeFavorite(story);
     $tgt.closest("i").toggleClass("fas far");
   } else {
+    // opposite if not fav
     await currentUser.addFavorite(story);
     $tgt.closest("i").toggleClass("fas far");
   }
