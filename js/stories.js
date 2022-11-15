@@ -19,12 +19,17 @@ async function getAndShowStoriesOnStart() {
  * Returns the markup for the story.
  */
 
-function generateStoryMarkup(story) {
+function generateStoryMarkup(story,showDeleteBtn =false) {
   // console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
+
+  const showStar= Boolean(currentUser);
+
   return $(`
       <li id="${story.storyId}">
+        ${showDeleteBtn ? getDeleteBtnHTML():""}
+        ${showStar ? getStarHTML(story,currentUser):""}
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>

@@ -220,15 +220,15 @@ class User {
 
   async addFavorite(story){
     this.favorites.push(story);
-    await this.addOrRemoveFavorite('add',story)
+    await this._addOrRemoveFavorite('add',story)
   }
 
   async removeFavorite(story){
     this.favorites =this.favorites.filter(s=>s.storyId !== story.storyId)
-    await this.addOrRemoveFavorite("remove",story)
+    await this._addOrRemoveFavorite("remove",story)
   }
 
-  async addOrRemoveFavorite(newState,story){
+  async _addOrRemoveFavorite(newState,story){
     const method = newState === "add" ? "POST" : "DELETE";
     const token = this.loginToken;
     await axios ({
@@ -238,7 +238,7 @@ class User {
     })
   }
 
-  ifFavorite(story){
+  isFavorite(story){
     return this.favorites.some(s=> (s.storyId === s.storyId))
   }
 }
