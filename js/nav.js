@@ -12,7 +12,7 @@ function navAllStories(evt) {
   putStoriesOnPage();
 }
 
-$('#nav-favorites').on('click', navFavoritesClick);
+$('#nav-all').on('click', navAllStories);
 
 /** Show login/signup on click on "login" */
 
@@ -39,7 +39,7 @@ function navSubmitStoryClick(evt){
   console.debug("navSubmitStoryClick",evt);
   hidePageComponents();
   $allStoriesList.show();
-  $submit-Form.show()
+  $submitForm.show()
 }
 
 $navSubmitStory.on('click',navSubmitStoryClick)
