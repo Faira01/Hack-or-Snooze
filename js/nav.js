@@ -12,7 +12,7 @@ function navAllStories(evt) {
   putStoriesOnPage();
 }
 
-$body.on("click", "#nav-all", navAllStories);
+$('#nav-favorites').on('click', navFavoritesClick);
 
 /** Show login/signup on click on "login" */
 
