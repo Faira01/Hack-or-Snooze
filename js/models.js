@@ -240,5 +240,6 @@ class User {
 
   isFavorite(story){
     return this.favorites.some(s=> (s.storyId === s.storyId))
+    //fix
   }
 }

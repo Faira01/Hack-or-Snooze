@@ -50,6 +50,7 @@ function getDeleteBtnHTML() {
 
 function getStarHTML(story, user) {
   const isFavorite = user.isFavorite(story);
+  console.debug(story.title, isFavorite)
   const starType = isFavorite ? "fas" : "far";
   return `
       <span class="star">
@@ -61,6 +62,8 @@ function putStoriesOnPage() {
   console.debug("putStoriesOnPage");
 
   $allStoriesList.empty();
+  $favoritedStories.empty();
+  $ownStories.empty();
 
   for (let story of storyList.stories) {
     const $story = generateStoryMarkup(story);
@@ -74,6 +77,7 @@ function putUserStoriesOnPage() {
   console.debug("putUserStoriesOnPage");
 
   $ownStories.empty();
+  $favoritedStories.empty();
 
   if (currentUser.ownStories.length === 0) {
     $ownStories.append("<h5>No stories added by user yet!</h5>");
@@ -127,6 +131,7 @@ function putFavoritesListOnPage() {
   console.debug("putFavoritesListOnPage");
 
   $favoritedStories.empty();
+  $ownStories.empty();
 
   if (currentUser.favorites.length === 0) {
     $favoritedStories.append("<h5>No favorites added!</h5>");
